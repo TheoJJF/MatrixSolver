@@ -4,6 +4,9 @@ function [U,d] = GEPP(A,b)
 Perform Gaussian Elimination with Partial Pivoting (GEPP).
 
 Parameters: A (Matrix), b (Vector)
+Note: A is assume to be nonsingular
+    Error is thrown when the matrix is near/singular.
+
 Returns: U (Matrix), d (Vector)
 
 %}
