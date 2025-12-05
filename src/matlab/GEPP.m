@@ -25,7 +25,6 @@ Returns: L (Matrix), U (Matrix), P (Matrix) d (Vector)
 
     P = eye(size(A));
     L = zeros(size(A));
-    pivot_factor = zeros(n,1);
     
     for i = 1:n-1
         [Aii_max,i_max_subcol] = max(abs(A(i:n,i)));
@@ -47,16 +46,15 @@ Returns: L (Matrix), U (Matrix), P (Matrix) d (Vector)
         pivot_recip = 1/A(i,i);
 
         for j = i+1:n
-            pivot_factor(j) = A(j,i)*pivot_recip;
-            L(j,i) = pivot_factor(j);
+            L(j,i) = A(j,i)*pivot_recip;
 
-            b(j) = b(j)-pivot_factor(j)*b(i);
+            b(j) = b(j)-L(j,i)*b(i);
             A(j,i) = 0;
         end
 
         for j = i+1:n
             for k = i+1:n
-                A(j,k) = A(j,k)-pivot_factor(j)*A(i,k);
+                A(j,k) = A(j,k)-L(j,i)*A(i,k);
             end
         end
     end
