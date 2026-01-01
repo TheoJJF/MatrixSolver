@@ -1,4 +1,4 @@
-function x = SolveGEPP(A,b,TOL)
+function x = Solve(A,b,TOL)
     arguments
         A 
         b

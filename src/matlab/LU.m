@@ -1,4 +1,4 @@
-function [L,U,P,d] = GEPP(A,b,TOL)
+function [L,U,P,d] = LU(A,b,TOL)
 %{
 
 Perform Gaussian Elimination with Partial Pivoting (GEPP).
@@ -26,6 +26,7 @@ Returns: L (Matrix), U (Matrix), P (Matrix) d (Vector)
     P = eye(size(A));
     L = zeros(size(A));
     
+    % Perform Gauss Elimination with Partial Pivoting
     for i = 1:n-1
         [Aii_max,i_max_subcol] = max(abs(A(i:n,i)));
         
