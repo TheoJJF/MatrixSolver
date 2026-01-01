@@ -5,6 +5,6 @@ function x = Solve(A,b,TOL)
         TOL = 1e-12
     end
 
-    [~,U,~,d] = GEPP(A,b,TOL);
+    [~,U,~,d] = LU(A,b,TOL);
     x = BackSub(U,d);
 end
